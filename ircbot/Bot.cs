@@ -36,7 +36,7 @@ namespace ircbot
             sw.AutoFlush = true;
     	}
 	    public void login(String nick, String address)
-    	    {
+    	{
 	        sw.Write("NICK " + nick + "\n");
 	        sw.Write("USER " + nick + " " + address + ": cs Bot\n");
 	        sw.Write("JOIN " + channel + "\n");
@@ -50,7 +50,7 @@ namespace ircbot
 	        Logger.log("PRIVMSG NICKSERV :IDENTIFY big360");
 	        Logger.log("JOIN " + channel);
 	        say("#test","hi every1");
-    	    }
+    	}
 	    public void say(string channel, string message) 
 	    {
 	        sw.Write("PRIVMSG " + channel + " :" + message + "\n");
