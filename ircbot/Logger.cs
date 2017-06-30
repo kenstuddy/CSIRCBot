@@ -33,8 +33,8 @@ namespace ircbot
 		public static void log(string @message)
 		{
 			try {
-				if (@message == null) throw new ArgumentNullException("string");
-	           string currentTime = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
+			    if (@message == null) throw new ArgumentNullException("string");
+	            string currentTime = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
 				var objFile = new System.IO.StreamWriter(
 				System.AppDomain.CurrentDomain.BaseDirectory +
 				@"\botlogs.txt", true);
@@ -50,7 +50,7 @@ namespace ircbot
 			string @message = @message1 + @message2;
 			try {
 				if (@message == null) throw new ArgumentNullException("string");
-	           string currentTime = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
+	            string currentTime = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
 				var objFile = new System.IO.StreamWriter(
 				System.AppDomain.CurrentDomain.BaseDirectory +
 				@"\botlogs.txt", true);

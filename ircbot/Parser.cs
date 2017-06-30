@@ -24,7 +24,7 @@ namespace ircbot
         string exit = "";
         string operation = "";
         double Total = 0;
-        bool bad = false;
+        bool badInput = false;
 	    private string[] dinput;
 		public Parser()
 		{
@@ -51,11 +51,11 @@ namespace ircbot
                         Total = firstNumber / secondNumber;
                         break;
                     default:
-                        bad = true;
+                        badInput = true;
                         break;
                 }
             }
-            if (bad == false)
+            if (badInput == false)
             {
                 csBot.say(csBot.channel, "The resulting number is " + Total);
             }
@@ -72,17 +72,17 @@ namespace ircbot
 				Console.WriteLine(currLine);
 				Logger.log(currLine);
 				dinput = currLine.Split(' ');
-               if (dinput[0].StartsWith(":") && dinput[0].IndexOf("!") > 0 && dinput[0].IndexOf("@") > 0)
-	           {
-	               usern = dinput[0].Substring(1); //users username
-	               nickn = usern.Substring(0, usern.IndexOf("!")); //users nick
-	               hostn = usern.Substring(usern.IndexOf("@") + 1); //users host
-	           }
-               string p4 = "";
-               if (dinput.Length > 4)
-               {
-                   p4 = dinput[4];
-               }
+                if (dinput[0].StartsWith(":") && dinput[0].IndexOf("!") > 0 && dinput[0].IndexOf("@") > 0)
+	            {
+	                usern = dinput[0].Substring(1); //users username
+	                nickn = usern.Substring(0, usern.IndexOf("!")); //users nick
+	                hostn = usern.Substring(usern.IndexOf("@") + 1); //users host
+	            }
+                string p4 = "";
+                if (dinput.Length > 4)
+                {
+                    p4 = dinput[4];
+                }
 				if (currLine.StartsWith("PING"))
 				{
 					csBot.pong(currLine);
@@ -208,14 +208,11 @@ namespace ircbot
                         }
                         csBot.act(csBot.channel, message);
                     }
-                    else if ((currLine.Contains(".say")) &&
-                             (!currLine.Contains(".sayhi")) &&
-                             nickn.Equals(Program.owner))
+                    else if ((currLine.Contains(".say")) && (!currLine.Contains(".sayhi")) && nickn.Equals(Program.owner))
                     {
                         if (dinput.Length < 5)
                         {
-                            csBot.say(csBot.channel,
-                                      "You must type something for me to say!");
+                            csBot.say(csBot.channel, "You must type something for me to say!");
                         }
                         else
                         {

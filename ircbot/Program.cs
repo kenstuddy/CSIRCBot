@@ -58,10 +58,10 @@ namespace ircbot
 		}
 		static void  run() { 
 			Parser par = new Parser();     
-			 while((currLine = Reader.ReadLine()) != null)
-	         {
-				par.parseText(currLine,csBot);
-	  		 }
+			while((currLine = Reader.ReadLine()) != null)
+	        {
+                par.parseText(currLine,csBot);
+	  		}
 		}
 	}
 }
