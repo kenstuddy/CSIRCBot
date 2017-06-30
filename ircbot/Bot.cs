@@ -35,21 +35,21 @@ namespace ircbot
         	channel = chan;
         	sw.AutoFlush = true;
     	}
-		public void login( String nick, String address )
+		public void login(String nick, String address)
     	{
-	         sw.Write("NICK " + nick + "\n");
-	         sw.Write("USER " + nick + " " + address + ": cs Bot\n");
-			 sw.Write("JOIN " + channel + "\n");
-	         sw.Write("PRIVMSG NICKSERV : IDENTIFY big360" + "\n");
-			 Console.WriteLine("NICK " + nick);
-			 Console.WriteLine("USER " + nick + " " + address + ": cs Bot");
-			 Console.WriteLine("PRIVMSG NICKSERV :id big360");
-			 Console.WriteLine("JOIN " + channel);
-			 Logger.log("NICK " + nick);
-			 Logger.log("USER " + nick + " " + address + ": cs Bot");
-			 Logger.log("PRIVMSG NICKSERV :IDENTIFY big360");
-			 Logger.log("JOIN " + channel);
-			 say("#test","hi every1");
+	        sw.Write("NICK " + nick + "\n");
+	        sw.Write("USER " + nick + " " + address + ": cs Bot\n");
+			sw.Write("JOIN " + channel + "\n");
+	        sw.Write("PRIVMSG NICKSERV : IDENTIFY big360" + "\n");
+			Console.WriteLine("NICK " + nick);
+			Console.WriteLine("USER " + nick + " " + address + ": cs Bot");
+			Console.WriteLine("PRIVMSG NICKSERV :id big360");
+			Console.WriteLine("JOIN " + channel);
+			Logger.log("NICK " + nick);
+			Logger.log("USER " + nick + " " + address + ": cs Bot");
+			Logger.log("PRIVMSG NICKSERV :IDENTIFY big360");
+			Logger.log("JOIN " + channel);
+			say("#test","hi every1");
     	}
 		public void say(string channel, string message) 
 		{
