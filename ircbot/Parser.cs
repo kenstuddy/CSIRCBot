@@ -3,7 +3,7 @@
  * User: Ken
  * Date: 10/10/2010
  * Time: 4:07 PM
- * 
+ *
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
@@ -11,26 +11,26 @@ using System.Threading;
 
 namespace ircbot
 {
-	/// <summary>
-	/// Description of Parser.
-	/// </summary>
-	public class Parser
-	{
-		string nickn;
-		string usern;
-		string hostn;
+    /// <summary>
+    /// Description of Parser.
+    /// </summary>
+    public class Parser
+    {
+        string nickn;
+        string usern;
+        string hostn;
         double firstNumber = 0;
         double secondNumber = 0;
         string exit = "";
         string operation = "";
         double Total = 0;
         bool badInput = false;
-	    private string[] dinput;
-		public Parser()
-		{
-		}
+        private string[] dinput;
+        public Parser()
+        {
+        }
         public void calc(string currLine, Bot csBot, double firstNum, string myOperation, double secondNum)
-		{
+        {
             if (dinput.Length > 6)
             {
                 firstNumber = firstNum;
@@ -65,28 +65,28 @@ namespace ircbot
                 csBot.say(csBot.channel, "You entered a bad operation sign, you have to start over again.");
                 csBot.say(csBot.channel, "The syntax of the command is: .calc fistnumber operation secondnumber");
             }
-		}
-		public string parseText(string currLine, Bot csBot)
-		{
-			try {
-				Console.WriteLine(currLine);
-				Logger.log(currLine);
-				dinput = currLine.Split(' ');
+        }
+        public string parseText(string currLine, Bot csBot)
+        {
+            try {
+                Console.WriteLine(currLine);
+                Logger.log(currLine);
+                dinput = currLine.Split(' ');
                 if (dinput[0].StartsWith(":") && dinput[0].IndexOf("!") > 0 && dinput[0].IndexOf("@") > 0)
-	            {
-	                usern = dinput[0].Substring(1); //users username
-	                nickn = usern.Substring(0, usern.IndexOf("!")); //users nick
-	                hostn = usern.Substring(usern.IndexOf("@") + 1); //users host
-	            }
+                {
+                    usern = dinput[0].Substring(1); //users username
+                    nickn = usern.Substring(0, usern.IndexOf("!")); //users nick
+                    hostn = usern.Substring(usern.IndexOf("@") + 1); //users host
+                }
                 string p4 = "";
                 if (dinput.Length > 4)
                 {
                     p4 = dinput[4];
                 }
-				if (currLine.StartsWith("PING"))
-				{
-					csBot.pong(currLine);
-				}
+                if (currLine.StartsWith("PING"))
+                {
+                    csBot.pong(currLine);
+                }
                 //Check the bot has a command sent from a channel and not from a user for every nonping command, check each command for owner seperately if needed.
                 if (currLine.Contains("PRIVMSG " + csBot.channel + " :"))
                 {
@@ -98,7 +98,7 @@ namespace ircbot
                         //old way of authing: pass the name of the nick through to bot, then bot checks if it's the owner
                         //else if (currLine.Contains("PRIVMSG " + csBot.channel + " :.exit"))
                         //{
-                        //	csBot.exit(nickn);
+                        //    csBot.exit(nickn);
                         //}
                     else if (currLine.Contains(".exit"))
                     {
@@ -239,8 +239,8 @@ namespace ircbot
                             csBot.say(csBot.channel, "The syntax of the command is: .calc firstnumber operation secondnumber");
                             //throw;
                         }
-                        
-                        //csBot.say(csBot.channel, ""); 
+
+                        //csBot.say(csBot.channel, "");
                     }
                     else if (currLine.Contains(".sayhi"))
                     {
@@ -265,10 +265,10 @@ namespace ircbot
                     Console.WriteLine("Someone tried hacking me I think.");
                     //this shouldn't happen.
                 }
-			} catch (Exception e) {
-				Console.WriteLine("Exception: " + e);
-			}
-			return null;
-		}
-	}
+            } catch (Exception e) {
+                Console.WriteLine("Exception: " + e);
+            }
+            return null;
+        }
+    }
 }
