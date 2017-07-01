@@ -49,7 +49,7 @@ namespace ircbot
             //par.parseText(currLine, csBot);
             /* Code to test multithreading to prove that this really has multiple threads:
             while (true)
-                Console.WriteLine("GG");
+                Console.WriteLine("test");
             */
         }
         public static void Main(string[] args)
