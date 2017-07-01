@@ -30,7 +30,7 @@ namespace ircbot
         static string address = "wat"; //not quite sure what this does yet
         static string channel = "#test";
         static int port = 6667;
-           static string currLine = null;
+        static string currLine = null;
         static TcpClient irc = new TcpClient(server, port);
         static NetworkStream stream = irc.GetStream(); // defines the sockets
         static StreamReader Reader = new StreamReader(stream);
@@ -56,12 +56,13 @@ namespace ircbot
         {
             new Program();
         }
-        static void  run() {
+        static void run()
+        {
             Parser par = new Parser();
             while((currLine = Reader.ReadLine()) != null)
             {
                 par.parseText(currLine,csBot);
-              }
+            }
         }
     }
 }
