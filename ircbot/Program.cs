@@ -27,7 +27,7 @@ namespace ircbot
         public static string owner = "ken";
         static string server = "irc.swiftirc.net";
         static string nick = "ON-csbotIRC";
-        static string address = "wat"; //not quite sure what this does yet
+        static string address = "test";
         static string channel = "#test";
         static int port = 6667;
         static string currLine = null;
@@ -42,7 +42,7 @@ namespace ircbot
             //Writer.AutoFlush = true;
             //Console.WriteLine(currLine);
             //The csBot object needs to be passed as an argument because we HAVE to use the same streamwriter for the Bot class,
-            //and also it can't be static or it won't work for some reason except now it can be... weird.
+            //and also it can't be static or it won't work.
             Thread thrd = new Thread(run);
             thrd.Start();
             //old code before threading:
