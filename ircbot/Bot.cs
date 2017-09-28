@@ -35,68 +35,53 @@ namespace ircbot
             channel = chan;
             sw.AutoFlush = true;
         }
-        public void login(String nick, String address)
+        public void sendMessage(string message)
         {
-            sw.Write("NICK " + nick + "\n");
-            sw.Write("USER " + nick + " " + address + ": cs Bot\n");
-            sw.Write("JOIN " + channel + "\n");
-            sw.Write("PRIVMSG NICKSERV : IDENTIFY big360" + "\n");
-            Console.WriteLine("NICK " + nick);
-            Console.WriteLine("USER " + nick + " " + address + ": cs Bot");
-            Console.WriteLine("PRIVMSG NICKSERV :id big360");
-            Console.WriteLine("JOIN " + channel);
-            Logger.log("NICK " + nick);
-            Logger.log("USER " + nick + " " + address + ": cs Bot");
-            Logger.log("PRIVMSG NICKSERV :IDENTIFY big360");
-            Logger.log("JOIN " + channel);
-            say("#test","hi every1");
+            sw.Write(message);
+            Console.Write(message);
+            Logger.log(message);
+        }
+        public void login(string nick, string address)
+        {
+            sendMessage("NICK " + nick + "\n");
+            sendMessage("USER " + nick + " " + address + ": cs Bot\n");
+            sendMessage("JOIN " + channel + "\n");
+            say("#test","hi everyone");
         }
         public void say(string channel, string message)
         {
-            sw.Write("PRIVMSG " + channel + " :" + message + "\n");
-            Console.Write("PRIVMSG " + channel + " :" + message + "\n");
-            Logger.log("PRIVMSG " + channel + " :" + message + "\n");
+            sendMessage("PRIVMSG " + channel + " :" + message + "\n");
         }
         public void act(string channel, string message)
         {
-            sw.WriteLine("PRIVMSG " + channel + " \u0001ACTION " + message + "\u0001");
-            Console.WriteLine("PRIVMSG " + channel + " \u0001ACTION " + message + "\u0001");
-            Logger.log("PRIVMSG " + channel + " \u0001ACTION " + message + "\u0001");
+            sendMessage("PRIVMSG " + channel + " \u0001ACTION " + message + "\u0001");
         }
         public void notice(string channel, string message)
         {
-            sw.Write("NOTICE " + channel + " :" + message + "\n");
-            Console.Write("NOTICE " + channel + " :" + message + "\n");
-            Logger.log("NOTICE " + channel + " :" + message + "\n");
+            sendMessage("NOTICE " + channel + " :" + message + "\n");
         }
         public void pong(string currLine)
         {
-            sw.Write("PONG :{0}", currLine.Substring(currLine.IndexOf(" :") + 2) + "\n");
-            Console.Write("PONG :{0}", currLine.Substring(currLine.IndexOf(" :") + 2) + "\n");
-            Logger.log("PONG :{0}", currLine.Substring(currLine.IndexOf(" :") + 2) + "\n");
+            sendMessage("PONG :{0}", currLine.Substring(currLine.IndexOf(" :") + 2) + "\n");
+
         }
         public void mode(string user, string mode)
         {
-            sw.Write("MODE " + channel + " " + mode + " " + user + "\n");
-            Console.Write("MODE " + channel + " " + mode + " " + user + "\n");
-            Logger.log("MODE " + channel + " " + mode + " " + user);
+            sendMessage("MODE " + channel + " " + mode + " " + user + "\n");
         }
         public void join(string chann)
         {
             part();
-            sw.Write("JOIN " + chann + "\n");
-            Logger.log("JOIN " + chann + "\n");
+            sendMessage("JOIN " + chann + "\n");
             channel = chann;
         }
         public void part()
         {
-            sw.Write("PART " + channel + "\n");
-            Logger.log("PART " + channel + "\n");
+            sendMessage("PART " + channel + "\n");
         }
         public void exit()
         {
             say(channel,"I'm out. Peace!");
-            Logger.log(channel,"I'm out. Peace!");
             Environment.Exit(0);
         }
     }
