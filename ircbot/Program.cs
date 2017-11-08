@@ -26,7 +26,7 @@ namespace ircbot
     {
         public static string owner = "ken";
         static string server = "irc.swiftirc.net";
-        static string nick = "ON-csbotIRC";
+        static string nick = "csbotIRC";
         static string address = "test";
         static string channel = "#test";
         static int port = 6667;
